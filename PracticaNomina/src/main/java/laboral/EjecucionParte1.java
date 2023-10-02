@@ -5,6 +5,9 @@ package laboral;
  */
 public class EjecucionParte1 {
 	
+	/**
+	 * Llamada al codigo Main de la Parte 1
+	 */
 	public static void ejecucion() {
 		try {
 			

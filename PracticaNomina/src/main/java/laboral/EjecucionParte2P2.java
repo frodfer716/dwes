@@ -12,34 +12,38 @@ import java.sql.SQLException;
  */
 public class EjecucionParte2P2 {
 	
-	public static void ejecucion() throws DatosNoCorrectosException {
+	/**
+	 * Llamada al codigo Main del Punto 2 de la Parte 2
+	 */
+	public static void ejecucion() {
 		List<Empleado> empleados = new ArrayList<>();
 		
 		Connection conn = null;
         Statement st = null;
-        ResultSet rs = null;
+        @SuppressWarnings("unused")
+		ResultSet rs = null;
         
         try {
         	conn = DBUtils.getConnection();
         	st = conn.createStatement();
-        	rs = st.executeQuery("SELECT * FROM empleados");
         	
-        	while(rs.next()) {
-        		String dni = rs.getString(2);
-        		String nombre = rs.getString(1);
-        		char sexo = rs.getString(3).charAt(0);
-        		int categoria = rs.getInt(4);
-        		double anyos = rs.getDouble(5);
-        		empleados.add(new Empleado(dni, nombre, sexo, categoria, anyos));
-        		System.out.println("Empleado leido con exito.");
-        	}
+        	empleados.add(new Empleado("James Cosling", "32000032G", 'M', 4, 7));
+        	empleados.add(new Empleado("Ada Lovelace", "32000031R", 'F'));
         	
-        	empleados.get(1).setCategoria(9);
-        	empleados.get(0).incrAnyo();
+        	for (int i = 0; i < empleados.size(); i++) {
+        		Empleado e = empleados.get(i);
+        		
+        		int numFilasEmpleado = st.executeUpdate("INSERT INTO empleados (dni, nombre, sexo, categoria, anyos) VALUES ('" + e.dni + "', '" + e.nombre + "', '" + e.sexo + "', " + e.getCategoria() + ", " + e.anyos + ")");
+        		System.out.println("Empleado insertado ("+ numFilasEmpleado +" filas) con exito.");
+    		}
         	
-        	rs = st.executeQuery("UPDATE empleados SET categoria = " + empleados.get(1).getCategoria() +" WHERE dni = '32000032G'");
+        	empleados.get(0).setCategoria(9);
+        	empleados.get(1).incrAnyo();
+        	System.out.println("Empleados actualizados.");
+        	
+        	rs = st.executeQuery("UPDATE empleados SET categoria = " + empleados.get(0).getCategoria() +" WHERE dni = '32000032G'");
         	System.out.println("Categoria actualizada con exito.");
-        	rs = st.executeQuery("UPDATE empleados SET anyos = " + empleados.get(0).anyos +" WHERE dni = '32000031R'");
+        	rs = st.executeQuery("UPDATE empleados SET anyos = " + empleados.get(1).anyos +" WHERE dni = '32000031R'");
         	System.out.println("Anyos actualizados con exito.");
         	
         	for (int i = 0; i < empleados.size(); i++) {
@@ -53,11 +57,15 @@ public class EjecucionParte2P2 {
         	
         } catch(SQLException e){
             System.out.println("Ocurrió una excepción al conectar a la BD");
-        } finally {
+        } catch (DatosNoCorrectosException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
             try {
                 if (conn != null) {
                     conn.close();
                 }
+                System.out.println("Terminado con exito.");
             } catch (SQLException ex) {
                 System.out.println("Ocurrió una excepción al cerrar la BD");
             }

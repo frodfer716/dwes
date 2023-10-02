@@ -12,6 +12,9 @@ import java.io.PrintWriter;
  */
 public class EjecucionParte2P1 {
 	
+	/**
+	 * Llamada al codigo Main del Punto 1 de la Parte 2
+	 */
 	public static void ejecucion() {
 		char sexo;
 		int categoria;

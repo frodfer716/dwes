@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS pruebaNominas.Nominas;
+/*DROP TABLE IF EXISTS pruebaNominas.Nominas;
 DROP TABLE IF EXISTS pruebaNominas.Empleados;
 DROP DATABASE IF EXISTS pruebaNominas;
 
@@ -25,10 +25,12 @@ CREATE TABLE Nominas (
 
 
 -- Usar la base de datos
-USE pruebaNominas;
+USE pruebaNominas;*/
 
 -- Insertar datos en la tabla Empleado
-INSERT INTO Empleados (dni, nombre, sexo, categoria, anyos)
+/*INSERT INTO Empleados (dni, nombre, sexo, categoria, anyos)
 VALUES
     ('32000032G', 'James Cosling', 'M', 4, 7),
-    ('32000031R', 'Ada Lovelace', 'F', 1, 0);
+    ('32000031R', 'Ada Lovelace', 'F', 1, 0);*/
+    
+SELECT nomina FROM nominas WHERE empleado_dni = '32000031R'
