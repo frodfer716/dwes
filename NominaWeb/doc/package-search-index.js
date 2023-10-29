@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.empresa.conexion"},{"l":"com.empresa.controller"},{"l":"com.empresa.dao"},{"l":"com.empresa.model"}];updateSearchResults();
