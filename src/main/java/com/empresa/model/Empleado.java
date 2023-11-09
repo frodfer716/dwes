@@ -12,7 +12,7 @@ public class Empleado extends Persona {
 	 */
 	Persona p;
 	private int categoria;
-	public double anyos;
+	private double anyos;
 	
 	
 	/**
@@ -22,13 +22,14 @@ public class Empleado extends Persona {
 	 * @param sexo
 	 * @param categoria
 	 * @param anyos
-	 * @throws DatosNoCorrectosException categoria y/o anyos incorrecto
 	 */
 	public Empleado(String dni, String nombre, char sexo, int categoria, double anyos) {
 		super(dni, nombre, sexo);
 		this.categoria = categoria;
 		this.anyos = anyos;
 	}
+	
+	
 
 	/**
 	 * Constructor Empleado sin entrada de categoria
@@ -69,7 +70,6 @@ public class Empleado extends Persona {
 	/**
 	 * Setter de categoria
 	 * @param categoria
-	 * @throws DatosNoCorrectosException 
 	 */
 	public void setCategoria(int categoria) {
 		this.categoria = categoria;
@@ -78,7 +78,6 @@ public class Empleado extends Persona {
 	/**
 	 * Setter de anyos
 	 * @param anyos
-	 * @throws DatosNoCorrectosException 
 	 */
 	public void setAnyos(double anyos) {
 		this.anyos = anyos;

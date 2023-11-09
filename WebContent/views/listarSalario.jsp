@@ -1,22 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.empresa.model.Empleado, com.empresa.model.Nomina"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Listar Salarios</title>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.empresa.model.Empleado, com.empresa.model.Nomina" %>
 
-<link rel="stylesheet" href="css/styles.css">
-
-</head>
-<body>
-    <a id="volver" href="empresa?opcion=index">
-    	<img src="img/x-solid.svg"></img>
-    </a>
-  
-	<div class="container">
+<div class="container">
 		<h1>Buscar Nóminas</h1>
 
 		<form method="post" action="empresa" id="ultimoForm">

@@ -8,9 +8,9 @@ public class Persona {
 	/**
 	 * Declaracion de variables
 	 */
-	public String dni;
-	public String nombre;
-	public char sexo;
+	private String dni;
+	private String nombre;
+	private char sexo;
 	
 	
 	/**

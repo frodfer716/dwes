@@ -1,21 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Editar empleado</title>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<link rel="stylesheet" href="css/styles.css">
-
-</head>
-<body>
-    <a id="volver" href="empresa?opcion=listarEmpleado">
-    	<img src="img/x-solid.svg"></img>
-    </a>
-
-	<div class="container">
+<div class="container">
 	 <h1>Editar Empleado</h1>
 	 <form action="empresa" method="post">
 	  	<c:set var="empleado" value="${empleado}"></c:set>
@@ -54,5 +40,3 @@
 	  	<input type="submit" value="Guardar">
 	 </form>
   	</div>
-</body>
-</html>

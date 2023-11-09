@@ -20,7 +20,7 @@ public class Nomina {
 	 */
 	public double sueldo(Empleado e) {
 		int sueldoBase = SUELDO_BASE[e.getCategoria() - 1];
-		double sueldo = sueldoBase + 5000 * e.anyos;
+		double sueldo = sueldoBase + 5000 * e.getAnyos();
 		
 		return sueldo;
 		
