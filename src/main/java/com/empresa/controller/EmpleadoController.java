@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.empresa.dao.AuthDAO;
 import com.empresa.dao.EmpleadoDAO;
 import com.empresa.model.Empleado;
 import com.empresa.model.Nomina;
+import com.empresa.model.Usuario;
 
 /**
  * Servlet de implementacion, clase ProductoController
@@ -47,6 +49,16 @@ public class EmpleadoController extends HttpServlet {
 
 		if (opcion.equals("menu")) {
 			request.setAttribute("content", "/views/menu.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+			requestDispatcher.forward(request, response);
+
+		} else if (opcion.equals("log")) {
+			request.setAttribute("content", "/views/login.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+			requestDispatcher.forward(request, response);
+
+		} else if (opcion.equals("registration")) {
+			request.setAttribute("content", "/views/register.jsp");
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
 			requestDispatcher.forward(request, response);
 
@@ -284,6 +296,7 @@ public class EmpleadoController extends HttpServlet {
 					// Manejar el error
 					e.printStackTrace();
 				}
+				
 			} else {
 				// Enviar errores a la vista
 				request.setAttribute("dniError", dniError);
@@ -295,6 +308,64 @@ public class EmpleadoController extends HttpServlet {
 				request.setAttribute("content", "/views/editar.jsp");
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
 				requestDispatcher.forward(request, response);
+			}
+			
+		} else if (opcion.equals("registrarUsuario")) {
+			AuthDAO authDAO = new AuthDAO();
+
+			String name = request.getParameter("name");
+			String surnames = request.getParameter("surnames");
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+
+			Usuario user = new Usuario(name, surnames, email, password);
+
+			try {
+				boolean exito = authDAO.registrarUsuario(user);
+
+				if (exito) {
+					request.setAttribute("content", "views/inicio.jsp");
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
+			        requestDispatcher.forward(request, response);
+				} else {
+					// El registro no fue exitoso, muestra un mensaje de error
+					request.setAttribute("mensajeError",
+							"No se pudo completar el registro, porque el email ya existe, o has puesto un campo malo.");
+					request.setAttribute("content", "views/registro.jsp");
+					
+				    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
+					requestDispatcher.forward(request, response);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		else if (opcion.equals("loginUsuario")) {
+			AuthDAO authDAO = new AuthDAO();
+			
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+
+			try {
+			    String token = authDAO.login(email, password);
+
+			    if (token != null) {
+			        // El inicio de sesión fue exitoso, almacena el token en la sesión o como sea necesario
+			        request.getSession().setAttribute("token", token);
+					request.setAttribute("content", "views/menu.jsp");
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
+			        requestDispatcher.forward(request, response);
+			    } else {
+			    	request.setAttribute("mensajeError", "Email o contraseña inválidos");
+					request.setAttribute("content", "views/login.jsp");
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
+			        requestDispatcher.forward(request, response);
+			    }
+
+			} catch (SQLException e) {
+			    e.printStackTrace();
 			}
 		}
 	}

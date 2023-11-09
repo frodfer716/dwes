@@ -14,7 +14,7 @@
 
 	<c:choose>
 	    <c:when test="${empty content && content == null}">
-	        <%@ include file="views/menu.jsp" %>
+	        <%@ include file="views/inicio.jsp" %>
 	    </c:when>
 	    <c:otherwise>
 	        <jsp:include page="${content}" />

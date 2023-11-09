@@ -17,7 +17,7 @@
 		    <label for="sexo">Sexo:</label>
 		    <input type="text" name="sexo" size="50" value="${empleado.sexo}">
 			<c:if test="${not empty sexoError}">
-				<div class="error" id="errorEditar">${sexoError}</div>
+				<div class="error">${sexoError}</div>
 			</c:if>
 		</div>
 		
