@@ -5,7 +5,7 @@
 	 <h1>Registrarse</h1>
 	 <form action="empresa" method="post">
 	  	<c:set var="usuario" value="${usuario}"></c:set>
-	  	<input type="hidden" name="opcion" value="login">
+	  	<input type="hidden" name="opcion" value="registrarUsuario">
 	  	
 	  	<div id="busqueda">
 			<label for="name">Nombre:</label>

@@ -42,11 +42,8 @@ public class AuthDAO {
 
 			// Verificar si el usuario ya existe en la base de datos por correo electrónico
 			if (existeUserconEmail(user.getEmail().toLowerCase())) {
-				System.out.println("El usuario ya existe en la base de datos.");
 				exito = false;
 			} else if (validarCamposUser(user) && isValidEmail(user.getEmail())) {
-
-				System.out.println("Campos válidos, procediendo a la inserción.");
 
 				// Los campos son válidos, procedemos a la inserción
 				String contrasenaEncriptada = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
@@ -72,9 +69,6 @@ public class AuthDAO {
 					System.out.println("Token JWT generado: " + token);
 				}
 			} else {
-
-				System.out.println("Los campos del usuario no son válidos.");
-				// Los campos del usuario no son válidos
 				exito = false;
 			}
 

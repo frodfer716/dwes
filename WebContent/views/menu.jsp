@@ -3,7 +3,7 @@
     	<div class="tabla" id="inicio">
 	    	<table>
 	      		<tr>
-	        		<td><a href="empresa?opcion=crear">Nuevo empleados</a></td>
+	        		<td><a href="empresa?opcion=crear">Nuevo empleado</a></td>
 	      		</tr>
 	      		<tr>
 	        		<td><a href="empresa?opcion=listarEmpleado">Mostrar empleados</a></td>
@@ -13,6 +13,9 @@
 	      		</tr>
 	      		<tr>
 	        		<td><a href="empresa?opcion=buscarEmpleado">Modificar empleado</a></td>
+	      		</tr>
+	      		<tr>
+	        		<td><a href="empresa?opcion=delog">Cerrar sesión</a></td>
 	      		</tr>
 	    	</table>
     	</div>
