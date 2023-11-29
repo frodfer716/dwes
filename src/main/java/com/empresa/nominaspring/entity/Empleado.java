@@ -5,52 +5,39 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 import jakarta.persistence.Id;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Table(name = "empleados")
 public class Empleado {
 
     @Id
-    @Getter
-    @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Getter
-    @Setter
     @Column(name = "dni", nullable = false, unique = true)
     private String dni;
 
-    @Getter
-    @Setter
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Getter
-    @Setter
-    @Column(name = "apellido", nullable = false)
-    private String apellido;
-
-    @Getter
-    @Setter
     @Column(name = "sexo", nullable = false)
-    private String sexo;
+    private char sexo;
 
-    @Getter
-    @Setter
     @Column(name = "categoria", nullable = false)
     private int categoria;
 
-    @Getter
-    @Setter
     @Column(name = "anyos", nullable = false)
     private double anyos;
+
+    public Empleado(String dni, String nombre, char sexo, int categoria, double anyos) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.sexo = sexo;
+        this.categoria = categoria;
+        this.anyos = anyos;
+    }
     
 }
