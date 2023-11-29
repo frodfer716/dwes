@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.empresa.nominaspring.entity.Empleado;
 import com.empresa.nominaspring.service.EmpleadoService;
 
 @Controller
@@ -20,8 +21,15 @@ public class EmpleadoController {
 
     @GetMapping("/listarEmpleados")
     public String listarEmpleados(Model modelo) {
-        modelo.addAttribute("listarEmpleados", empleadoService.listarEmpleados());
-        return "index";
+        modelo.addAttribute("empleados", empleadoService.listarEmpleados());
+        return "listarEmpleados";
+    }
+
+    @GetMapping("/crearEmpleado")
+    public String crearEmpleado(Model modelo) {
+        Empleado empleado = new Empleado();
+        modelo.addAttribute("empleado", empleado);
+        return "crearEmpleado";
     }
     
 }

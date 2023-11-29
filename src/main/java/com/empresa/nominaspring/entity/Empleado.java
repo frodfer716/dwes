@@ -6,10 +6,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import jakarta.persistence.Id;
 
 @Entity
 @Data
+@RequiredArgsConstructor
 @Table(name = "empleados")
 public class Empleado {
 
@@ -31,13 +33,5 @@ public class Empleado {
 
     @Column(name = "anyos", nullable = false)
     private double anyos;
-
-    public Empleado(String dni, String nombre, char sexo, int categoria, double anyos) {
-        this.dni = dni;
-        this.nombre = nombre;
-        this.sexo = sexo;
-        this.categoria = categoria;
-        this.anyos = anyos;
-    }
     
 }

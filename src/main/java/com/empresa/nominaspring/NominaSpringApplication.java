@@ -20,11 +20,13 @@ public class NominaSpringApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		/*
 		Empleado e1 = new Empleado("33000033A", "Fernando Alonso", 'M', 3, 3);
 		empleadoRepository.save(e1);
 		
 		Empleado e2 = new Empleado("33000034A", "Antonio Lobato", 'M', 4, 5);
 		empleadoRepository.save(e2);
+		*/
 	}
 
 }
