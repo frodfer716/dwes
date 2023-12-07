@@ -25,8 +25,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Override
     public Empleado editarEmpleado(Empleado empleado) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editarEmpleado'");
+        return empleadoRepository.save(empleado);
     }
 
     @Override
