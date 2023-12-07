@@ -44,8 +44,8 @@
                 <td th:text="${empleado.sexo}"></td>
                 <td th:text="${empleado.categoria}"></td>
                 <td th:text="${empleado.anyos}"></td>
-                <td><a th:href="@{/editarEmpleado}" style="color: #2E3440;">Editar</a></td>
-                <td><a th:href="@{/eliminarEmpleado}" style="color: #2E3440;">Eliminar</a></td>
+                <td><a th:href="@{/editarEmpleado/{dni}(dni=${empleado.dni})}" style="color: #2E3440;">Editar</a></td>
+                <td><a th:href="@{/eliminarEmpleado/{dni}(dni=${empleado.dni})}" style="color: #2E3440;">Eliminar</a></td>
               </tr>
             </tbody>
           </table>

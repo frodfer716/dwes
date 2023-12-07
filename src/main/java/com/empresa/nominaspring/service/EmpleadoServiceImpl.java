@@ -42,8 +42,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Override
     public Empleado buscarEmpleadoPorDNI(String dni) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarEmpleadoPorDNI'");
+        return empleadoRepository.findByDNI(dni);
     }
 
     @Override
