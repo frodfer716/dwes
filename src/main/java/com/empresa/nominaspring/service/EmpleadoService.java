@@ -14,7 +14,9 @@ public interface EmpleadoService {
 
     public void eliminarEmpleado(String dni);
 
-    public Empleado buscarSalario(String dni);
+    public List<Empleado> buscarSalario(String dni);
+    
+    public double salario(Empleado e);
 
     public Empleado buscarEmpleadoPorDNI(String dni);
 

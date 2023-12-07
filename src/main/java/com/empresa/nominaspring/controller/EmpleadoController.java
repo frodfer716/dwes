@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.empresa.nominaspring.entity.Empleado;
 import com.empresa.nominaspring.service.EmpleadoService;
@@ -66,6 +67,19 @@ public class EmpleadoController {
     public String eliminarEmpleado(@PathVariable String dni) {
         empleadoService.eliminarEmpleado(dni);
         return "redirect:/listarEmpleados";
+    }
+
+    @GetMapping("/listarSalarios")
+    public String listarSalarios(Model modelo) {
+        modelo.addAttribute("empleado", new Empleado());
+        return "listarSalarios";
+    }
+
+    @GetMapping("/buscarSalarios")
+    public String buscarSalarios(@RequestParam String dni, @ModelAttribute("empleado") Empleado empleado, Model modelo) {
+        modelo.addAttribute("salarios", empleadoService.buscarSalario(dni));
+        modelo.addAttribute("salario", empleadoService.salario(empleadoService.buscarEmpleadoPorDNI(dni)));
+        return "listarSalarios";
     }
     
 }

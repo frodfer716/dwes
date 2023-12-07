@@ -35,9 +35,14 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     }
 
     @Override
-    public Empleado buscarSalario(String dni) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarSalario'");
+    public List<Empleado> buscarSalario(String dni) {
+        return empleadoRepository.buscarSalario(dni);
+    }
+    
+    @Override
+    public double salario(Empleado e) {
+        int sueldoBase = Empleado.SUELDO_BASE[e.getCategoria() - 1];
+        return sueldoBase + 5000 * e.getAnyos();
     }
 
     @Override

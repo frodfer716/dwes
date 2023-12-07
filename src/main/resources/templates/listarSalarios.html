@@ -30,28 +30,25 @@
 	
 	<div class="container" style="margin-top: 40px;">
         <div class="row justify-content-center ">
-            <h1 class="text-center" style="margin-bottom: 50px;">Lista de empleados</h1>
+            <h1 class="text-center" style="margin-bottom: 20px;">Lista de empleados</h1>
+        </div>
+        <div class="row justify-content ">
+          <form th:action="@{/buscarSalarios}" th:object="${empleado}" method="GET">
+            <input type="text" th:field="*{dni}" class="form-control">
+            <button type="submit" class="btn btn-success mb-4 mt-2">Buscar</button>
+          </form>
         </div>
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
               <tr>
                 <th class="text-center" scope="col">DNI</th>
-                <th class="text-center" scope="col">Nombre</th>
-                <th class="text-center" scope="col">Sexo</th>
-                <th class="text-center" scope="col">Categoria</th>
-                <th class="text-center" scope="col">Años trabajados</th>
-                <th class="text-center" scope="col" colspan="2">Acciones</th>
+                <th class="text-center" scope="col">Salario</th>
               </tr>
             </thead>
             <tbody>
-              <tr th:each="empleado : ${empleados}">
-                <td th:text="${empleado.dni}"></td>
-                <td th:text="${empleado.nombre}"></td>
-                <td th:text="${empleado.sexo}"></td>
-                <td th:text="${empleado.categoria}"></td>
-                <td th:text="${empleado.anyos}"></td>
-                <td><a th:href="@{/editarEmpleado/{dni}(dni=${empleado.dni})}" style="color: #2E3440;">Editar</a></td>
-                <td><a th:href="@{/eliminarEmpleado/{dni}(dni=${empleado.dni})}" style="color: #2E3440;">Eliminar</a></td>
+              <tr th:each="s : ${salarios}">
+                <td th:text="${s.dni}"></td>
+                <td th:text="${salario}"></td>
               </tr>
             </tbody>
           </table>
