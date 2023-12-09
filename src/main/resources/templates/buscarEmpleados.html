@@ -30,9 +30,70 @@
 	
 	<div class="container" style="margin-top: 40px;">
         <div class="row justify-content-center ">
-            <h1 class="text-center" style="margin-bottom: 50px;">Buscar empleados</h1>
+            <h1 class="text-center" style="margin-bottom: 20px;">Buscar empleados</h1>
         </div>
-        <table class="table table-bordered table-striped">
+
+        <div class="row justify-content mb-2">
+          <form class="form-inline" th:action="@{/buscarEmpleadosPorDNI}" th:object="${empleado}" method="GET">
+            <div class="form-group">
+              <label>DNI: </label>
+            </div>
+            <div class="form-group mx-sm-3">
+              <input type="text" th:field="*{dni}" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Buscar</button>
+          </form>
+        </div>
+
+        <div class="row justify-content mb-2">
+          <form class="form-inline" th:action="@{/buscarEmpleadosPorNombre}" th:object="${empleado}" method="GET">
+            <div class="form-group">
+              <label>Nombre: </label>
+            </div>
+            <div class="form-group mx-sm-3">
+              <input type="text" th:field="*{nombre}" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Buscar</button>
+          </form>
+        </div>
+
+        <div class="row justify-content mb-2">
+          <form class="form-inline" th:action="@{/buscarEmpleadosPorSexo}" th:object="${empleado}" method="GET">
+            <div class="form-group">
+              <label>Sexo: </label>
+            </div>
+            <div class="form-group mx-sm-3">
+              <input type="text" th:field="*{sexo}" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Buscar</button>
+          </form>
+        </div>
+
+        <div class="row justify-content mb-2">
+          <form class="form-inline" th:action="@{/buscarEmpleadosPorCategoria}" th:object="${empleado}" method="GET">
+            <div class="form-group">
+              <label>Categoria: </label>
+            </div>
+            <div class="form-group mx-sm-3">
+              <input type="text" th:field="*{categoria}" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Buscar</button>
+          </form>
+        </div>
+
+        <div class="row justify-content mb-2">
+          <form class="form-inline" th:action="@{/buscarEmpleadosPorAnyos}" th:object="${empleado}" method="GET">
+            <div class="form-group">
+              <label>Años: </label>
+            </div>
+            <div class="form-group mx-sm-3">
+              <input type="text" th:field="*{anyos}" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Buscar</button>
+          </form>
+        </div>
+
+        <table class="table table-bordered table-striped mt-4">
             <thead class="thead-dark">
               <tr>
                 <th class="text-center" scope="col">DNI</th>

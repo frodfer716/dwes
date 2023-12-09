@@ -45,13 +45,13 @@ public class EmpleadoController {
 
     @GetMapping("/editarEmpleado/{dni}")
     public String editarEmpleado(@PathVariable String dni, Model modelo) {
-        modelo.addAttribute("empleado", empleadoService.buscarEmpleadoPorDNI(dni));
+        modelo.addAttribute("empleado", empleadoService.listarEmpleado(dni));
         return "editarEmpleado";
     }
 
     @PostMapping("/listarEmpleados/{dni}")
     public String editar(@PathVariable String dni, @ModelAttribute("empleado") Empleado empleado, Model modelo) {
-        Empleado empleadoExistente = empleadoService.buscarEmpleadoPorDNI(dni);
+        Empleado empleadoExistente = empleadoService.listarEmpleado(dni);
 
         empleadoExistente.setDni(dni);
         empleadoExistente.setNombre(empleado.getNombre());
@@ -77,9 +77,45 @@ public class EmpleadoController {
 
     @GetMapping("/buscarSalarios")
     public String buscarSalarios(@RequestParam String dni, @ModelAttribute("empleado") Empleado empleado, Model modelo) {
-        modelo.addAttribute("salarios", empleadoService.buscarSalario(dni));
-        modelo.addAttribute("salario", empleadoService.salario(empleadoService.buscarEmpleadoPorDNI(dni)));
+        modelo.addAttribute("empleados", empleadoService.buscarEmpleadosPorDNI(dni));
+        modelo.addAttribute("salario", empleadoService.salario(empleadoService.listarEmpleado(dni)));
         return "listarSalarios";
+    }
+
+    @GetMapping("/buscarEmpleados")
+    public String buscarEmpleados(Model modelo) {
+        modelo.addAttribute("empleado", new Empleado());
+        return "buscarEmpleados";
+    }
+
+    @GetMapping("/buscarEmpleadosPorDNI")
+    public String buscarEmpleadosPorDNI(@RequestParam String dni, @ModelAttribute("empleado") Empleado empleado, Model modelo) {
+        modelo.addAttribute("empleados", empleadoService.buscarEmpleadosPorDNI(dni));
+        return "buscarEmpleados";
+    }
+
+    @GetMapping("/buscarEmpleadosPorNombre")
+    public String buscarEmpleadosPorNombre(@RequestParam String nombre, @ModelAttribute("empleado") Empleado empleado, Model modelo) {
+        modelo.addAttribute("empleados", empleadoService.buscarEmpleadosPorNombre(nombre));
+        return "buscarEmpleados";
+    }
+
+    @GetMapping("/buscarEmpleadosPorSexo")
+    public String buscarEmpleadosPorSexo(@RequestParam char sexo, @ModelAttribute("empleado") Empleado empleado, Model modelo) {
+        modelo.addAttribute("empleados", empleadoService.buscarEmpleadosPorSexo(sexo));
+        return "buscarEmpleados";
+    }
+
+    @GetMapping("/buscarEmpleadosPorCategoria")
+    public String buscarEmpleadosPorCategoria(@RequestParam int categoria, @ModelAttribute("empleado") Empleado empleado, Model modelo) {
+        modelo.addAttribute("empleados", empleadoService.buscarEmpleadosPorCategoria(categoria));
+        return "buscarEmpleados";
+    }
+
+    @GetMapping("/buscarEmpleadosPorAnyos")
+    public String buscarEmpleadosPorAnyos(@RequestParam double anyos, @ModelAttribute("empleado") Empleado empleado, Model modelo) {
+        modelo.addAttribute("empleados", empleadoService.buscarEmpleadosPorAnyos(anyos));
+        return "buscarEmpleados";
     }
     
 }

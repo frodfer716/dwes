@@ -32,7 +32,7 @@
         <div class="row justify-content-center ">
             <h1 class="text-center" style="margin-bottom: 20px;">Lista de empleados</h1>
         </div>
-        <div class="row justify-content ">
+        <div class="row justify-content">
           <form th:action="@{/buscarSalarios}" th:object="${empleado}" method="GET">
             <input type="text" th:field="*{dni}" class="form-control">
             <button type="submit" class="btn btn-success mb-4 mt-2">Buscar</button>
@@ -46,8 +46,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr th:each="s : ${salarios}">
-                <td th:text="${s.dni}"></td>
+              <tr th:each="e : ${empleados}">
+                <td th:text="${e.dni}"></td>
                 <td th:text="${salario}"></td>
               </tr>
             </tbody>

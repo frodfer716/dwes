@@ -5,8 +5,12 @@ import java.util.List;
 import com.empresa.nominaspring.entity.Empleado;
 
 public interface EmpleadoService {
+    
+    public double salario(Empleado e);
 
     public List<Empleado> listarEmpleados();
+
+    public Empleado listarEmpleado(String dni);
 
     public Empleado crearEmpleado(Empleado empleado);
 
@@ -14,18 +18,14 @@ public interface EmpleadoService {
 
     public void eliminarEmpleado(String dni);
 
-    public List<Empleado> buscarSalario(String dni);
-    
-    public double salario(Empleado e);
+    public List<Empleado> buscarEmpleadosPorDNI(String dni);
 
-    public Empleado buscarEmpleadoPorDNI(String dni);
+    public List<Empleado> buscarEmpleadosPorNombre(String nombre);
 
-    public Empleado buscarEmpleadoPorNombre(String nombre);
+    public List<Empleado> buscarEmpleadosPorSexo(char sexo);
 
-    public Empleado buscarEmpleadoPorSexo(String sexo);
+    public List<Empleado> buscarEmpleadosPorCategoria(int categoria);
 
-    public Empleado buscarEmpleadoPorCategoria(int categoria);
-
-    public Empleado buscarEmpleadoPorAnyos(double anyos);
+    public List<Empleado> buscarEmpleadosPorAnyos(double anyos);
     
 }
